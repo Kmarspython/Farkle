@@ -3,3 +3,6 @@ Started the project. Created the loop for the program to run in. Got dice sprite
 
 1/16/2023
 Started adding "roll" and "keep" buttons. About an hour and a half.
+
+1/18/2023
+Simplified the dice drawing function. Added a lower section for the dice that get kept. Made is so that if you scroll over the buttons they get a little bigger. The roll button now randomizes the upper dice. About 2 and a half hours.
