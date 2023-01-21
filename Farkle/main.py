@@ -37,15 +37,30 @@ def main():
     roll_inflate = False
     keep_inflate = False
     load_images()
+    can_roll = True
+    can_select = False
     while running:
         pos = p.mouse.get_pos()
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
             elif e.type == p.MOUSEBUTTONDOWN:
-                if button_collision(roll, pos):
+                if button_collision(roll, pos) and can_roll:
                     randomize(board1)
-                select_dice(pos, board1_rects, highlighted_dice, selected_dice, board1)
+                    can_roll = False
+                    can_select = True
+                if can_select == True:
+                    select_dice(pos, board1_rects, highlighted_dice, selected_dice, board1)
+                if button_collision(keep, pos):
+                    board2 += selected_dice
+                    for r in range(len(highlighted_dice)):
+                        if highlighted_dice[r] == True:
+                            board1[r] = "remove"
+                    board1 = [i for i in board1 if i != "remove"]
+                    highlighted_dice = [False] * len(board1)
+                    selected_dice = []
+                    can_roll = True
+                print(highlighted_dice)
                 print(selected_dice)
             elif e.type == p.KEYDOWN:
                 if e.key == p.K_SPACE:
@@ -89,7 +104,7 @@ def draw_dice(board1, board2, screen):
     for r in range(len(board2)):
         dice = board2[r]
         x1 = 0 if len(board2) >= 3 else len(board2)
-        y = 8 * DICE_SIZE if r <= 2 else 11 * DICE_SIZE
+        y = 8 * DICE_SIZE if r <= 2 else 10 * DICE_SIZE
         x = ((2 * r + 4) * DICE_SIZE) + (DICE_SIZE * onetotwo[x1]) if r <= 2 else ((2 * (r - 3) + 4) * DICE_SIZE) + (
                     DICE_SIZE * onetotwo[len(board2) - 3])
         p.draw.rect(screen, p.Color("Light Blue"), p.Rect((x, y, DICE_SIZE, DICE_SIZE)))
