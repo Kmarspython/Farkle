@@ -1,5 +1,6 @@
 import pygame as p
 import random
+from Points import *
 
 WIDTH = HEIGHT = 600
 CENTER = (WIDTH // 2, HEIGHT // 2)
@@ -60,8 +61,7 @@ def main():
                     highlighted_dice = [False] * len(board1)
                     selected_dice = []
                     can_roll = True
-                print(highlighted_dice)
-                print(selected_dice)
+                print(four_combos)
             elif e.type == p.KEYDOWN:
                 if e.key == p.K_SPACE:
                     if len(board1) < 6:

@@ -12,3 +12,6 @@ Added a function to highlight dice when you click on them. This will make it so 
 
 1/20/2023
 Added the ability to click on the keep button and add the highlighted dice to the below section. Added the rule that you can only roll once and then you have to keep some dice before you can roll again. About 30 minutes.
+
+1/22/2023
+Started adding a dictionary to keep track of what dice combinations are worth. About an hour.
