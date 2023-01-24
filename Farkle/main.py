@@ -39,9 +39,13 @@ def main():
     keep_inflate = False
     load_images()
     can_roll = True
+    can_keep = False
     can_select = False
+    points = 0
     while running:
         pos = p.mouse.get_pos()
+        can_keep, points = keeping(selected_dice, one_combos, two_combos, three_combos, four_combos, five_combos, six_combos)
+        keep_color = p.Color("green") if can_keep == True else p.Color("gray")
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
@@ -50,9 +54,11 @@ def main():
                     randomize(board1)
                     can_roll = False
                     can_select = True
+                    highlighted_dice = [False] * len(board1)
+                    selected_dice = []
                 if can_select == True:
                     select_dice(pos, board1_rects, highlighted_dice, selected_dice, board1)
-                if button_collision(keep, pos):
+                if button_collision(keep, pos) and can_keep == True:
                     board2 += selected_dice
                     for r in range(len(highlighted_dice)):
                         if highlighted_dice[r] == True:
@@ -61,7 +67,7 @@ def main():
                     highlighted_dice = [False] * len(board1)
                     selected_dice = []
                     can_roll = True
-                print(four_combos)
+                    print(points)
             elif e.type == p.KEYDOWN:
                 if e.key == p.K_SPACE:
                     if len(board1) < 6:
@@ -79,7 +85,7 @@ def main():
         board1_rects = draw_dice(board1, board2, screen)
         highlight_dice(screen, highlighted_dice, board1_rects)
         roll_inflate = True if button_collision(roll, pos) else False
-        keep_inflate = True if button_collision(keep, pos) else False
+        keep_inflate = True if button_collision(keep, pos) and can_keep == True else False
 
         roll, roll_text = create_button(screen, my_font, big_font, "Roll", p.Color("black"), (CENTER[0] - 75, CENTER[1] - 25),
                                             BUTTON_WIDTH, BUTTON_HEIGHT, roll_color, roll_inflate)

@@ -15,3 +15,6 @@ Added the ability to click on the keep button and add the highlighted dice to th
 
 1/22/2023
 Started adding a dictionary to keep track of what dice combinations are worth. About an hour.
+
+1/23/2023
+Finished adding the dictionaries to keep track of points. Added a function that goes through each dictionary to see if the selected dice are worth any points. About 2 hours.
