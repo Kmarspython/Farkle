@@ -42,10 +42,12 @@ def main():
     can_keep = False
     can_select = False
     points = 0
+    total_points = 0
     while running:
         pos = p.mouse.get_pos()
         can_keep, points = keeping(selected_dice, one_combos, two_combos, three_combos, four_combos, five_combos, six_combos)
         keep_color = p.Color("green") if can_keep == True else p.Color("gray")
+        roll_color = p.Color("green") if can_roll == True else p.Color("gray")
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
@@ -64,33 +66,34 @@ def main():
                         if highlighted_dice[r] == True:
                             board1[r] = "remove"
                     board1 = [i for i in board1 if i != "remove"]
+                    total_points += points
                     highlighted_dice = [False] * len(board1)
                     selected_dice = []
+                    if len(board1) == 0:
+                        board1 = ["d1"] * 6
+                        board2 = []
+                        highlighted_dice = [False] * 6
+                        selected_dice = []
+                        can_select = False
+                        can_keep = False
                     can_roll = True
-                    print(points)
             elif e.type == p.KEYDOWN:
                 if e.key == p.K_SPACE:
-                    if len(board1) < 6:
-                        board1.append(board2.pop())
-                        highlighted_dice.append(False)
-                elif e.key == p.K_n:
-                    if len(board1) != 0:
-                        board2.append(board1.pop())
-                        highlighted_dice.pop()
-                elif e.key == p.K_h:
-                    roll_inflate = not roll_inflate
-                elif e.key == p.K_g:
-                    keep_inflate = not keep_inflate
+                   pass
+
         screen.fill(p.Color("Light Blue"))
         board1_rects = draw_dice(board1, board2, screen)
         highlight_dice(screen, highlighted_dice, board1_rects)
-        roll_inflate = True if button_collision(roll, pos) else False
+        roll_inflate = True if button_collision(roll, pos) and can_roll == True else False
         keep_inflate = True if button_collision(keep, pos) and can_keep == True else False
 
         roll, roll_text = create_button(screen, my_font, big_font, "Roll", p.Color("black"), (CENTER[0] - 75, CENTER[1] - 25),
                                             BUTTON_WIDTH, BUTTON_HEIGHT, roll_color, roll_inflate)
         keep, keep_text = create_button(screen, my_font, big_font, "Keep", p.Color("black"), (CENTER[0] + 75, CENTER[1] - 25),
                                             BUTTON_WIDTH, BUTTON_HEIGHT, keep_color, keep_inflate)
+
+        create_text(screen, f"Points: {str(points)}", my_font, p.Color("Red"), (WIDTH - 80, 20))
+        create_text(screen, f"Points: {str(total_points)}", my_font, p.Color("Red"), (WIDTH - 80, HEIGHT // 2 + 20))
 
         clock.tick(MAX_FPS)
         p.display.flip()
@@ -129,6 +132,14 @@ def create_button(screen, font, big_font, text, text_color, button_center, butto
     font_rect.center = button_rect.center
     screen.blit(font_surf, font_rect)
     return button_rect, font_rect
+
+def create_text(screen, text, font, color, center):
+    """Creates text on the screen"""
+    font_surf = font.render(text, False, color)
+    font_width, font_height = font_surf.get_size()
+    font_rect = p.Rect(0, 0, font_width, font_height)
+    font_rect.center = center
+    screen.blit(font_surf, font_rect)
 
 def button_collision(rect, mouse):
     """Returns true if mouse is over rect"""

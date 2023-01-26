@@ -49,6 +49,7 @@ def keeping(selected, one, two, three, four, five, six):
         return False, points
     while len(sorted_selected) > 0:
         if len(sorted_selected) - x == 0:
+            points = 0
             break
         for i in index_dic[len(sorted_selected) - x].keys():
             temp = sorted(i)

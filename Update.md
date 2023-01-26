@@ -18,3 +18,6 @@ Started adding a dictionary to keep track of what dice combinations are worth. A
 
 1/23/2023
 Finished adding the dictionaries to keep track of points. Added a function that goes through each dictionary to see if the selected dice are worth any points. About 2 hours.
+
+1/24/2023
+Added displays for the total points and the points for the selected dice. About 1 hour.
