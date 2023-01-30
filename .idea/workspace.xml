@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="366ce523-f766-4a99-8f1b-ea2f7bb37d26" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Farkle/Points.py" beforeDir="false" afterPath="$PROJECT_DIR$/Farkle/Points.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Farkle/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Farkle/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Update.md" beforeDir="false" afterPath="$PROJECT_DIR$/Update.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

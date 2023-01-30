@@ -21,3 +21,6 @@ Finished adding the dictionaries to keep track of points. Added a function that 
 
 1/24/2023
 Added displays for the total points and the points for the selected dice. About 1 hour.
+
+1/29/2023
+Added a function to find out if the player has farkled or not. Added a text object that shows the points gotten on the previous round. I am about done. I think I will add some comments to code. About 2 hours.

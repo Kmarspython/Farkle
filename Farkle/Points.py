@@ -5,7 +5,7 @@ one_combos = {("d1",) : 100, ("d5",) : 50}
 two_combos = {("d1", "d1") : 200, ("d1", "d5") : 150, ("d5", "d5") : 100}
 
 # Three dice combos
-three_combos = {("d1", "d1", "d1") : 1000, ("d2", "d2", "d2") : 200, ("d3", "d3", "d3") : 300, ("d4", "d4", "d4") : 400, ("d5", "d5", "d5") : 500, ("d6", "d6", "d6") : 600}
+three_combos = {("d1", "d1", "d1") : 300, ("d2", "d2", "d2") : 200, ("d3", "d3", "d3") : 300, ("d4", "d4", "d4") : 400, ("d5", "d5", "d5") : 500, ("d6", "d6", "d6") : 600}
 
 # Four dice combos
 four_combos = {k + (k[0],): 1000 for k in three_combos.keys()}
@@ -38,6 +38,7 @@ six_combos.update(triplets)
 six_combos.update(three_pairs)
 six_combos.update(four_plus_pair)
 six_combos.update(straights)
+six_combos.update(sixes)
 
 def keeping(selected, one, two, three, four, five, six):
     """Determines if the selected list is in any of the points dictionaries"""
@@ -76,5 +77,21 @@ def check_sublist(list, sublist):
             return False
         if b == []:
             return True
+
+def super_list(x):
+    """Creates a list of all sublists of x"""
+    result = []
+    length = len(x)
+    for r in range(length):
+        for l in range(length):
+            if length - l > r:
+                result.append(x[r:length - l])
+    return result
+
+def has_farkled(super_set):
+    for i in super_set:
+        if keeping(i, one_combos, two_combos, three_combos, four_combos, five_combos, six_combos)[0]:
+            return False
+    return True
 
 
