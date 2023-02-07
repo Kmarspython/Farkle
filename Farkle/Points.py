@@ -80,18 +80,28 @@ def check_sublist(list, sublist):
 
 def super_list(x):
     """Creates a list of all sublists of x"""
+    # List the function returns
     result = []
+    # Temporary lists for the function
     temp1 = []
     temp2 = []
+    # Length of the list x
     length = len(x)
+    # Loop that goes through the list x
     for r in range(length):
+        # Adds each of the elements in the list x to a temporary list
         temp1.append([x[r]])
+    # Adds temp1 to the result list
     result += (temp1)
     while length > 1:
+        # Loop through the number of items in temp1
         for r in range(len(temp1)):
+            # Copy of list x so x does not change in the function. Also sets the resets the list for every iteration.
             dup_list = x[:]
+            # Removes items from
             for l in temp1[r]:
                 dup_list.remove(l)
+            #Goes through each element of the copy of list x
             for y in dup_list:
                 if temp2 == []:
                     temp2.append(temp1[r] + [y])
