@@ -81,17 +81,48 @@ def check_sublist(list, sublist):
 def super_list(x):
     """Creates a list of all sublists of x"""
     result = []
+    temp1 = []
+    temp2 = []
     length = len(x)
     for r in range(length):
-        for l in range(length):
-            if length - l > r:
-                result.append(x[r:length - l])
+        temp1.append([x[r]])
+    result += (temp1)
+    while length > 1:
+        for r in range(len(temp1)):
+            dup_list = x[:]
+            for l in temp1[r]:
+                dup_list.remove(l)
+            for y in dup_list:
+                if temp2 == []:
+                    temp2.append(temp1[r] + [y])
+                else:
+                    flag = False
+                    for m in temp2:
+                        if check_sublist(m, temp1[r] + [y]):
+                            flag = False
+                            break
+                        else:
+                            flag = True
+                    if flag == True:
+                        temp2.append(temp1[r] + [y])
+                if len(temp1[r] + [y]) == len(x):
+                    result += temp2
+                    print(len(result))
+                    return result
+        result += temp2
+        temp1 = temp2[:]
+        temp2 = []
+        length -= 1
+    print(len(result))
     return result
 
 def has_farkled(super_set):
+    print(len(super_set))
+    print(super_set)
     for i in super_set:
         if keeping(i, one_combos, two_combos, three_combos, four_combos, five_combos, six_combos)[0]:
             return False
+    print(super_set)
     return True
 
 
