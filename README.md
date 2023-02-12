@@ -1,10 +1,4 @@
-Farkle
+## About the Project
 
-Farkle
-	My plan is to make a Farkle roll simulator in Python. Farkle is a similar game to Yahtzee. In Farkle, you roll 6 dice and you have to take dice out after each roll to score points. A 1 is worth 100 points and a 5 is worth 50 points. Other combinations of dice are worth more points. 3 of any one number is worth the face value of the number times 100. So, 3 threes is worth 300 points, 3 fours is worth 400 points and so on. After each roll you must take out at least one dice that is worth some number of points, and you are left with the rest of the dice to keep rolling and trying for points. You can go as long as you want, and if you are able to take out all of the dice you can restart with the 6 dice again. You keep a running tally of the points you get, and once you decide to stop you score all of those points. However, if you ever have a roll where you cannot take out any dice for points you “Farkle” and you lose all the points you have accumulated and get 0 points for your turn. http://farkle.games/official-rules/ here is a link to more in-depth rules. I do not plan on making the whole game, just a simulator of one turn of the game. It will not keep track of scores over multiple rounds and there will not be an AI or anything.
-	The first step will be to make six dice that are rollable. Then I will need to make it so that you can choose dice to keep after each roll and remove them from the rollable dice. Then I will need to connect each combination of numbers with their correct point values. Finally, I will need a way for the player to stop rolling and for the program to know when a Farkle happens.
-	My girlfriend and I play a lot of Yahtzee and some Farkle so I thought that something with dice would be fun. I thought that Farkle would be a good challenge and something that I could actually use for playing a game. I am planning on using pycharm, pygame, and random to make the game. I have some experience with pygame so that will help me, and I believe the rest I can figure out.
-	I am planning on using the following links to help me with my project:
-https://www.youtube.com/watch?v=AY9MnQ4x3zk&ab_channel=ClearCode (a pygame tutorial video that goes way beyond what I will need but will be helpful)
-http://farkle.games/official-rules/ (the official rules to Farkle, so I do not get anything wrong while making it.)
-https://www.pygame.org/docs/tut/PygameIntro.html (Pygame documentation.)
+For those not familiar, Farkle is a dice game similar to Yahtzee where you roll dice and score points based on what you rolled. 
+

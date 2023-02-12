@@ -27,3 +27,6 @@ Added a function to find out if the player has farkled or not. Added a text obje
 
 2/1/2023
 Added a bunch of comments and organized the code better. 1 hour.
+
+2/5/2023
+Fixed the bug with the function that creates the super list. 2 hours.
